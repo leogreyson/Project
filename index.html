@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>បទបង្ហាញ៖ អ្វីជា Sponsored Content?</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', 'Kantumruy Pro', sans-serif;
+        }
+        .slide {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.7s ease-in-out;
+            height: 100%;
+        }
+        .slide.active {
+            display: flex;
+            opacity: 1;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .slide.align-top.active {
+            justify-content: flex-start;
+            padding-top: 3rem; /* Add padding to avoid content sticking to the top */
+        }
+        .slide-content-wrapper {
+            animation: fadeIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .khmer-font { font-family: 'Kantumruy Pro', sans-serif; }
+        .dark-gradient-bg { background: linear-gradient(145deg, #1e3a8a 0%, #1e1b4b 100%); }
+        .light-bg { background-color: #f8fafc; }
+        .gradient-text-gold {
+            background: -webkit-linear-gradient(45deg, #fde047, #facc15, #eab308);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+        }
+        .team-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 1rem;
+            text-align: center;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: popIn 0.6s ease-out forwards;
+        }
+        .team-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        .team-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: white;
+            font-size: 1.75rem;
+            border: 2px solid;
+        }
+        @keyframes popIn { to { opacity: 1; transform: translateY(0); } }
+
+        .content-card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .content-card:hover {
+             transform: translateY(-5px);
+             box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* New styles for example cards */
+        .example-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+        }
+        .example-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.2);
+        }
+        .example-card img.bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease-out;
+        }
+        .example-card:hover img.bg {
+            transform: scale(1.1);
+        }
+        .example-card .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.1) 100%);
+        }
+        .example-card .content {
+            position: relative;
+            z-index: 10;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            height: 200px;
+        }
+
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen p-4 bg-gray-200">
+
+    <div id="presentation-container" class="w-full max-w-6xl h-[650px] rounded-2xl shadow-2xl flex flex-col overflow-hidden relative">
+
+        <!-- Slide 1: Title -->
+        <div id="slide-1" class="slide active relative w-full p-8 text-center text-white dark-gradient-bg">
+             <div class="slide-content-wrapper flex flex-col items-center w-full max-w-4xl">
+                 <img src="https://imgur.com/X1x19yn.png" alt="NUM Logo" class="h-20 mb-4"/>
+                <p class="khmer-font text-lg text-gray-300">សាកលវិទ្យាល័យជាតិគ្រប់គ្រង | NATIONAL UNIVERSITY OF MANAGEMENT</p>
+                <p class="text-xl text-yellow-400 font-semibold tracking-wider">Major: Management | Subject: E-Commerce</p>
+                <h1 class="text-6xl font-bold my-4 gradient-text-gold">What is Sponsored Content?</h1>
+                <p class="mb-8 text-xl text-gray-200 khmer-font">Lecturer: PAKRATTANAK | Group 6, GEN:31/58</p>
+                
+                <div class="team-grid w-full">
+                    <div class="team-card" style="animation-delay: 0.3s;"><div class="team-avatar" style="background-color: #ef4444; border-color: #f87171;">CV</div><p class="mt-2 text-white font-semibold text-sm khmer-font">CHUM VOREAKCHAN</p></div>
+                    <div class="team-card" style="animation-delay: 0.4s;"><div class="team-avatar" style="background-color: #f97316; border-color: #fb923c;">TP</div><p class="mt-2 text-white font-semibold text-sm khmer-font">THY PHOU SITH</p></div>
+                    <div class="team-card" style="animation-delay: 0.5s;"><div class="team-avatar" style="background-color: #3b82f6; border-color: #60a5fa;">OS</div><p class="mt-2 text-white font-semibold text-sm khmer-font">OUN SEREYVATHANA</p></div>
+                    <div class="team-card" style="animation-delay: 0.6s;"><div class="team-avatar" style="background-color: #8b5cf6; border-color: #a78bfa;">VS</div><p class="mt-2 text-white font-semibold text-sm khmer-font">VARN SOKMEAN</p></div>
+                    <div class="team-card" style="animation-delay: 0.7s;"><div class="team-avatar" style="background-color: #10b981; border-color: #34d399;">YM</div><p class="mt-2 text-white font-semibold text-sm khmer-font">YOULEY METREYROTHA</p></div>
+                </div>
+            </div>
+            <div class="absolute bottom-4 right-6 text-white/50 text-sm font-sans">1 / 10</div>
+        </div>
+        
+        <!-- Slide 2: Table of Contents -->
+        <div id="slide-2" class="slide relative w-full p-12 light-bg overflow-y-auto">
+            <div class="slide-content-wrapper text-center">
+                <h2 class="text-4xl font-bold text-blue-900 mb-8 khmer-font">TABLE OF CONTENT</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 text-left text-lg">
+                    <p class="khmer-font flex items-center"><span class="text-blue-600 font-bold text-2xl w-8">I.</span> WHAT IS SPONSORED CONTENT?</p>
+                    <p class="khmer-font flex items-center"><span class="text-blue-600 font-bold text-2xl w-8">II.</span> WHAT DO SPONSORED CONTENT LOOK LIKE?</p>
+                    <p class="khmer-font flex items-center"><span class="text-blue-600 font-bold text-2xl w-8">III.</span> WHY SHOULD YOU USE SPONSORED CONTENT?</p>
+                    <p class="khmer-font flex items-center"><span class="text-blue-600 font-bold text-2xl w-8">IV.</span> SPONSORED CONTENT VS. NATIVE ADVERTISING VS. ADVERTORIALS</p>
+                    <p class="khmer-font flex items-center"><span class="text-blue-600 font-bold text-2xl w-8">V.</span> EXAMPLE SPONSORED CONTENT</p>
+                    <p class="khmer-font flex items-center"><span class="text-blue-600 font-bold text-2xl w-8">VI.</span> HOW TO GET STARTED WITH SPONSORED CONTENT</p>
+                    <p class="khmer-font flex items-center"><span class="text-blue-600 font-bold text-2xl w-8">VII.</span> ACHIEVE YOUR GOALS WITH SPONSORED CONTENT</p>
+                </div>
+            </div>
+            <div class="absolute bottom-4 right-6 text-gray-400 text-sm font-sans">2 / 10</div>
+        </div>
+
+        <!-- Slide 3: What is Sponsored Content? -->
+        <div id="slide-3" class="slide align-top relative w-full light-bg px-12 py-12 overflow-y-auto">
+            <div class="slide-content-wrapper w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold text-blue-900 mb-4">I. WHAT IS SPONSORED CONTENT?</h2>
+                    <p class="text-gray-600 mb-4">Sponsored content is paid media where a brand pays a publisher or content creator to produce and share content that promotes the brand in a non-intrusive, informative, or entertaining way.</p>
+                    <p class="text-gray-600 mb-6">Unlike traditional ads, it blends in with regular content, matching the style and tone of the platform or creator.</p>
+                    <div class="content-card p-6">
+                        <h3 class="text-xl font-bold text-blue-800 mb-3">TYPICAL GOALS OF SPONSORED CONTENT CAN INCLUDE:</h3>
+                        <div class="space-y-2">
+                            <p class="flex items-center"><span class="text-green-500 mr-3">✔</span> INCREASING BRAND AWARENESS</p>
+                            <p class="flex items-center"><span class="text-green-500 mr-3">✔</span> PROMOTING A NEW PRODUCT OR SERVICE</p>
+                            <p class="flex items-center"><span class="text-green-500 mr-3">✔</span> BOOSTING SALES</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full h-96 rounded-2xl bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=2070&auto=format&fit=crop')"></div>
+            </div>
+            <div class="absolute bottom-4 right-6 text-gray-400 text-sm font-sans">3 / 10</div>
+        </div>
+
+        <!-- Slide 4: What Does It Look Like? -->
+        <div id="slide-4" class="slide align-top relative w-full light-bg px-12 py-12 overflow-y-auto">
+             <div class="slide-content-wrapper w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                 <div>
+                    <h2 class="text-4xl font-bold text-blue-900 mb-4">II. WHAT DOES SPONSORED CONTENT LOOK LIKE?</h2>
+                    <p class="text-gray-600 mb-6">Sponsored content can look a lot like organic (unpaid) content. But you'll often see a label or hashtag on a sponsored post. Those might say:</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="content-card p-3 text-center text-sm font-semibold">"Sponsored by"</div>
+                        <div class="content-card p-3 text-center text-sm font-semibold">"In collaboration with"</div>
+                        <div class="content-card p-3 text-center text-sm font-semibold">"Paid partnership"</div>
+                        <div class="content-card p-3 text-center text-sm font-semibold">"#ad"</div>
+                        <div class="content-card p-3 text-center text-sm font-semibold col-span-2">"This post was published in partnership with"</div>
+                    </div>
+                </div>
+                 <div class="w-full h-96 rounded-2xl bg-contain bg-center bg-no-repeat" style="background-image: url('https://imgur.com/xNzG95N.jpg');"></div>
+            </div>
+            <div class="absolute bottom-4 right-6 text-gray-400 text-sm font-sans">4 / 10</div>
+        </div>
+
+        <!-- Slide 5: Why Use It? -->
+        <div id="slide-5" class="slide align-top relative w-full light-bg px-12 py-12 overflow-y-auto">
+            <div class="slide-content-wrapper w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="w-full h-96 rounded-2xl bg-cover bg-center order-last md:order-first" style="background-image: url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=2070&auto=format&fit=crop')"></div>
+                <div>
+                    <h2 class="text-4xl font-bold text-blue-900 mb-6">III. WHY SHOULD YOU USE SPONSORED CONTENT?</h2>
+                    <div class="space-y-4">
+                        <div class="content-card p-4"><p><strong>TARGETING A NEW AND/OR SPECIFIC AUDIENCE:</strong> When you partner with the right creator that speaks to the audience you want to target, you can build a relationship with that audience faster. Because the audience likely already trusts your partner.</p></div>
+                        <div class="content-card p-4"><p><strong>INCREASING REFERRAL TRAFFIC TO YOUR WEBSITE:</strong> Sponsored content often includes links to your site which can increase your referral traffic, and hopefully help you achieve your other business goals. Like more leads or sales.</p></div>
+                        <div class="content-card p-4"><p><strong>ESTABLISHING YOURSELF AS A THOUGHT LEADER:</strong> By getting featured in industry-leading publications or mentioned by key creators in your niche, you can build social proof that shows your business is credible.</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-4 right-6 text-gray-400 text-sm font-sans">5 / 10</div>
+        </div>
+
+        <!-- Slide 6: Comparison (UPDATED) -->
+        <div id="slide-6" class="slide align-top relative w-full light-bg px-12 py-12 overflow-y-auto">
+            <div class="slide-content-wrapper w-full">
+                <h2 class="text-4xl font-bold text-blue-900 mb-8 text-center">IV. SPONSORED CONTENT VS. OTHERS</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="content-card p-8 text-center">
+                        <svg class="w-16 h-16 mx-auto mb-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3h2m-4 3H9m-4 4h2m-4 4h2m4-8h2m-4 8h2m-4-4h2m0 0h2"></path></svg>
+                        <h3 class="font-bold text-2xl mb-2 text-blue-800">NATIVE ADVERTISING</h3>
+                        <p class="text-gray-600 khmer-font">គឺជាប្រភេទ Contents ដែលមានលក្ខណៈស្រដៀងនឹង Contents ធម្មតា ដែលធ្វើឲ្យពិបាកក្នុងការបែងចែក។</p>
+                    </div>
+                     <div class="content-card p-8 text-center">
+                        <svg class="w-16 h-16 mx-auto mb-4 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        <h3 class="font-bold text-2xl mb-2 text-teal-800">ADVERTORIALS</h3>
+                        <p class="text-gray-600 khmer-font">បង្កើតឡើងដោយអ្នកបោះពុម្ព និងរចនាឡើងដើម្បីមើលទៅដូចជាអត្ថបទរបស់ពួកគេ។</p>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-4 right-6 text-gray-400 text-sm font-sans">6 / 10</div>
+        </div>
+
+        <!-- Slide 7: Examples (UPDATED) -->
+        <div id="slide-7" class="slide align-top relative w-full light-bg px-12 py-12 overflow-y-auto">
+            <div class="slide-content-wrapper w-full">
+                 <h2 class="text-4xl font-bold text-blue-900 mb-8 text-center">V. EXAMPLE SPONSORED CONTENT</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="example-card">
+                        <img src="https://imgur.com/dY0KYrr.jpg" class="bg" alt="Gymshark background">
+                        <div class="overlay"></div>
+                        <div class="content text-white">
+                            <img src="https://logo.clearbit.com/gymshark.com" class="h-8 mb-2 self-start" alt="Gymshark Logo"/>
+                            <p class="font-bold text-lg">GYMSHARK</p>
+                            <p class="text-sm">with Instagram Influencers</p>
+                        </div>
+                    </div>
+                    <div class="example-card">
+                        <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&w=1974&auto=format&fit=crop" class="bg" alt="YouTube background">
+                        <div class="overlay"></div>
+                         <div class="content text-white">
+                            <img src="https://logo.clearbit.com/nordvpn.com" class="h-8 mb-2 self-start" alt="NordVPN Logo"/>
+                            <p class="font-bold text-lg">NORDVPN</p>
+                            <p class="text-sm">with YouTube Creators</p>
+                        </div>
+                    </div>
+                    <div class="example-card">
+                         <img src="https://images.unsplash.com/photo-1542834369-f10ebf06d3e0?q=80&w=1887&auto=format&fit=crop" class="bg" alt="Starbucks background">
+                        <div class="overlay"></div>
+                         <div class="content text-white">
+                            <img src="https://logo.clearbit.com/starbucks.com" class="h-8 mb-2 self-start" alt="Starbucks Logo"/>
+                            <p class="font-bold text-lg">STARBUCKS</p>
+                            <p class="text-sm">with TikTok Creators</p>
+                        </div>
+                    </div>
+                    <div class="example-card">
+                         <img src="https://images.unsplash.com/photo-1512632578888-169bbbc64f33?q=80&w=1964&auto=format&fit=crop" class="bg" alt="Dubai background">
+                        <div class="overlay"></div>
+                         <div class="content text-white">
+                            <img src="https://logo.clearbit.com/telegraph.co.uk" class="h-8 mb-2 self-start" alt="Telegraph Logo"/>
+                            <p class="font-bold text-lg">THE TELEGRAPH</p>
+                            <p class="text-sm">with "A Year in Dubai"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="absolute bottom-4 right-6 text-gray-400 text-sm font-sans">7 / 10</div>
+        </div>
+
+        <!-- Slide 8: How to get started -->
+        <div id="slide-8" class="slide align-top relative w-full light-bg px-12 py-12 overflow-y-auto">
+            <div class="slide-content-wrapper w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold text-blue-900 mb-6">VI. HOW TO GET STARTED WITH SPONSORED CONTENT</h2>
+                    <ol class="space-y-4">
+                        <li class="flex items-start"><span class="font-bold text-2xl text-blue-600 mr-4">1.</span><div><h3 class="font-semibold text-lg">RESEARCH YOUR AUDIENCE</h3></div></li>
+                        <li class="flex items-start"><span class="font-bold text-2xl text-blue-600 mr-4">2.</span><div><h3 class="font-semibold text-lg">FIND RELEVANT CREATORS</h3></div></li>
+                        <li class="flex items-start"><span class="font-bold text-2xl text-blue-600 mr-4">3.</span><div><h3 class="font-semibold text-lg">ALIGN YOUR EXPECTATIONS AND REQUIREMENTS</h3></div></li>
+                        <li class="flex items-start"><span class="font-bold text-2xl text-blue-600 mr-4">4.</span><div><h3 class="font-semibold text-lg">CREATE (OR HELP CREATE) CONTENT</h3></div></li>
+                        <li class="flex items-start"><span class="font-bold text-2xl text-blue-600 mr-4">5.</span><div><h3 class="font-semibold text-lg">MEASURE YOUR SPONSORED CONTENT'S PERFORMANCE</h3></div></li>
+                    </ol>
+                </div>
+                <div class="w-full h-96 rounded-2xl bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1542744095-291d1f67b221?q=80&w=2070&auto=format&fit=crop');"></div>
+            </div>
+            <div class="absolute bottom-4 right-6 text-gray-400 text-sm font-sans">8 / 10</div>
+        </div>
+
+        <!-- Slide 9: Achieve Your Goals -->
+        <div id="slide-9" class="slide align-top relative w-full light-bg px-12 py-12 overflow-y-auto">
+            <div class="slide-content-wrapper w-full">
+                <h2 class="text-4xl font-bold text-blue-900 mb-8 text-center khmer-font">VII. ACHIEVE YOUR GOALS WITH SPONSORED CONTENT</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="content-card p-4 khmer-font text-center"><strong>បង្កើនការស្គាល់ម៉ាក</strong> (BRAND AWARENESS)</div>
+                    <div class="content-card p-4 khmer-font text-center"><strong>នាំអ្នកទស្សនា និងការជាវចូលសំណុំ</strong> (DRIVE TRAFFIC AND CONVERSIONS)</div>
+                    <div class="content-card p-4 khmer-font text-center"><strong>ផ្តល់ចំណេះដឹងដល់អតិថិជន</strong> (EDUCATE YOUR AUDIENCE)</div>
+                    <div class="content-card p-4 khmer-font text-center"><strong>បង្កើតទំនាក់ទំនងយូរអង្វែង</strong> (BUILD LONG-TERM RELATIONSHIPS)</div>
+                    <div class="content-card p-4 khmer-font text-center"><strong>បង្កើនភាពគួរឱ្យទុកចិត្ត</strong> (BOOST CREDIBILITY)</div>
+                    <div class="content-card p-4 khmer-font text-center"><strong>ឈ្នះក្នុងការប្រកួត</strong> (STAND OUT FROM COMPETITORS)</div>
+                </div>
+            </div>
+             <div class="absolute bottom-4 right-6 text-gray-400 text-sm font-sans">9 / 10</div>
+        </div>
+        
+        <!-- Slide 10: Q&A -->
+        <div id="slide-10" class="slide relative w-full flex-col items-center justify-center p-8 text-center dark-gradient-bg">
+             <div class="slide-content-wrapper w-full max-w-2xl text-white">
+                <h1 class="text-6xl font-bold mb-4 khmer-font gradient-text-gold">សូមអរគុណ</h1>
+                <p class="text-2xl font-semibold">THANK YOU.</p>
+            </div>
+            <div class="absolute bottom-4 right-6 text-white/50 text-sm font-sans">10 / 10</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="w-full max-w-6xl mt-4 flex items-center justify-between px-2">
+        <button id="prevBtn" class="bg-white/80 text-blue-900 font-bold py-2 px-6 rounded-lg shadow-lg hover:bg-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"><span class="khmer-font">មុន</span></button>
+        <div class="flex-grow mx-4"><div class="w-full bg-gray-300 rounded-full h-2.5"><div id="progressBar" class="bg-yellow-400 h-2.5 rounded-full transition-all duration-300" style="width: 10%;"></div></div></div>
+        <button id="nextBtn" class="bg-blue-600 text-white font-bold py-2 px-6 rounded-lg shadow-lg hover:bg-blue-700 transition-colors"><span class="khmer-font">បន្ទាប់</span></button>
+    </div>
+
+    <script>
+        // --- Presentation Navigation ---
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const progressBar = document.getElementById('progressBar');
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.forEach((slide) => slide.classList.remove('active'));
+            if (slides[index]) slides[index].classList.add('active');
+        }
+
+        function updateControls() {
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides - 1;
+            const progressPercentage = ((currentSlide + 1) / totalSlides) * 100;
+            progressBar.style.width = `${progressPercentage}%`;
+            nextBtn.innerHTML = (currentSlide === totalSlides - 1) ? `<span class="khmer-font">បញ្ចប់</span>` : `<span class="khmer-font">បន្ទាប់</span>`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                showSlide(currentSlide);
+                updateControls();
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+                updateControls();
+            }
+        });
+
+        showSlide(currentSlide);
+        updateControls();
+    </script>
+</body>
+</html>
